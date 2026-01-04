@@ -2,7 +2,7 @@ import { Check, Play, X } from "lucide-react";
 import { useRef, useState } from "react";
 import { AiOutlineMinus } from "react-icons/ai";
 
-import DotBg from "../../Icons/Dot_Bg.svg";
+import DotBg from "../../Icons/dot_bg.svg";
 import Container from "../../Shared/Container";
 import manImage from "../../assets/man_image.png";
 
