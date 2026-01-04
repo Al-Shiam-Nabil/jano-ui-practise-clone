@@ -107,13 +107,18 @@ const HappierCustomer = () => {
 
 // modal
 
-const Modal = ({ open, onClose }) => {
-  const modalRef = useRef(null);
+type ModalType = {
+  open: boolean;
+  onClose: () => void;
+};
 
-  const handleClose = (e) => {
+const Modal = ({ open, onClose }: ModalType) => {
+  const modalRef = useRef<HTMLInputElement>(null);
+
+  const handleClose = (e: React.MouseEvent) => {
     console.log(modalRef.current);
-    console.log(e.target);
-    if (modalRef.current && !modalRef.current.contains(e.target)) {
+
+    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
       onClose();
     }
   };
@@ -132,13 +137,13 @@ const Modal = ({ open, onClose }) => {
           <iframe
             width="100%"
             height="100%"
-            src="https://www.youtube.com/embed/PWXkYBmlbB4?si=m3sjHWmqHe_AlOd-"
+            src={`https://www.youtube.com/embed/PWXkYBmlbB4?si=m3sjHWmqHe_AlOd-`}
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+
           {/* close icon */}
           <div className="absolute top-0 -right-12 ">
             <X

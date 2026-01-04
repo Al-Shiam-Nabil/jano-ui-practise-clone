@@ -1,7 +1,11 @@
 import { ChevronRight } from "lucide-react";
 import NavContainer from "./NavContainer";
 
-const PageNav = ({ className }) => {
+type String = {
+  className: string;
+};
+
+const PageNav = ({ className }: String) => {
   return (
     <NavContainer className={className}>
       <ul className="w-full">

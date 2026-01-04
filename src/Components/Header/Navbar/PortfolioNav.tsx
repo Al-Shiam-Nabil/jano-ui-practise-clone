@@ -1,6 +1,8 @@
 import NavContainer from "./NavContainer";
-
-const PortfolioNav = ({ className }) => {
+type String = {
+  className: string;
+};
+const PortfolioNav = ({ className }: String) => {
   return (
     <NavContainer className={className}>
       <ul className="space-y-3">

@@ -4,15 +4,5 @@ import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-    svgr({
-      svgrOptions: {
-        icon: true,
-        exportType: "named",
-        namedExport: "ReactComponent",
-      },
-    }),
-  ],
+  plugins: [react(), tailwindcss(), svgr()],
 });

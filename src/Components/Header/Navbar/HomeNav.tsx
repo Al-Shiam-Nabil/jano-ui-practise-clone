@@ -1,6 +1,10 @@
 import NavContainer from "./NavContainer";
 
-const HomeNav = ({ className }) => {
+type String = {
+  className: string;
+};
+
+const HomeNav = ({ className }: String) => {
   return (
     <NavContainer className={className}>
       {/* business */}

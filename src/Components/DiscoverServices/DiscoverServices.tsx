@@ -1,5 +1,6 @@
 import { MoveRight } from "lucide-react";
 import { Discover1, Discover2, Discover3, Discover4 } from "../../Icons";
+
 import Button from "../../Shared/Button";
 import Container from "../../Shared/Container";
 

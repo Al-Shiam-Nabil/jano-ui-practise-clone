@@ -1,6 +1,9 @@
 import NavContainer from "./NavContainer";
+type String = {
+  className: string;
+};
 
-const BlogNav = ({ className }) => {
+const BlogNav = ({ className }: String) => {
   return (
     <NavContainer className={className}>
       <ul className="flex flex-col items-start space-y-3">
