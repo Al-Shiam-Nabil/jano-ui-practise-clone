@@ -1,12 +1,12 @@
 import { ChevronDown } from "lucide-react";
-import {  useState, type ElementType } from "react";
+import { useState, type ElementType } from "react";
 import { WhyBest1, WhyBest2, WhyBest3 } from "../../Icons";
 import Container from "../../Shared/Container";
 
 export default function WhatBest() {
+  const [selected, setSelected] = useState<number | null>(null);
   type BestArrType = {
-    // icon: ReactNode;
-    icon :ElementType
+    icon: ElementType;
     title: string;
     description: string;
   };
@@ -32,8 +32,6 @@ export default function WhatBest() {
     },
   ];
 
-  const [selected, setSelected] = useState<number | null>(null);
-
   return (
     <Container>
       <div className="flex">
@@ -45,11 +43,16 @@ export default function WhatBest() {
           <p className="text-black/30 uppercase">Why Choose Us</p>
           <h3 className="text-[58px] font-semibold">What makes us the best.</h3>
 
-          <div className="space-y-5 my-10">
+          <div className="space-y-5 my-10 h-[450px]">
             {bestArr.map((best, index) => (
-              <div key={index} className="border relative  rounded-xl  ">
+              <div
+                key={index}
+                className="shadow-sm shadow-gray-200 relative  rounded-xl  "
+              >
                 <div
-                  onClick={() => setSelected(index)}
+                  onClick={() =>
+                    setSelected((prev) => (prev === index ? null : index))
+                  }
                   className={`flex justify-between cursor-pointer  ${
                     index === selected ? "pt-6 px-6" : "p-6"
                   }`}
@@ -61,7 +64,11 @@ export default function WhatBest() {
                       <h3 className="text-2xl font-semibold">{best?.title}</h3>
                     </div>
                   </div>
-                  <div>
+                  <div
+                    className={`${
+                      index === selected && "rotate-180"
+                    } text-gray-500`}
+                  >
                     <ChevronDown />
                   </div>
                 </div>
