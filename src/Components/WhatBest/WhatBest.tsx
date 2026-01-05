@@ -43,7 +43,7 @@ export default function WhatBest() {
           <p className="text-black/30 uppercase">Why Choose Us</p>
           <h3 className="text-[58px] font-semibold">What makes us the best.</h3>
 
-          <div className="space-y-5 my-10 h-[450px]">
+          <div className="space-y-5 my-10 h-112.5">
             {bestArr.map((best, index) => (
               <div
                 key={index}
