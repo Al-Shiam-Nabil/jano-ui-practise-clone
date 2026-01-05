@@ -36,7 +36,7 @@ export default function WhatBest() {
   ];
 
   return (
-    <Container className="my-35">
+    <Container className="mt-35">
       <div className="flex gap-40">
         {/* left */}
         <div className="w-full lg:w-1/2 space-y-12 ">
