@@ -1,13 +1,20 @@
 import { Check } from "lucide-react";
-import { AppleStoreIcon, PlayStoreIcon } from "../../Icons";
+import {
+  AppleStoreIcon,
+  LoopArrow,
+  PlayStoreIcon,
+  TopThreeLine,
+} from "../../Icons";
 import Container from "../../Shared/Container";
+import backMobile from "../../assets/backMobile.png";
+import frontMobile from "../../assets/frontMobile.png";
 
 export default function DownloadApp() {
   return (
     <Container className="my-30">
-      <div className="flex">
+      <div className="flex flex-col xl:flex-row gap-20 xl:gap-20 2xl:gap-50 justify-between items-center">
         {/* left */}
-        <div className="w-1/2">
+        <div className="w-full xl:w-1/2">
           <p className="text-black/30">MOBILE APP</p>
           <h2 className="text-[58px] font-semibold">
             Download our Jano Application.
@@ -18,17 +25,17 @@ export default function DownloadApp() {
 
           <ul className="space-y-4">
             <li className="text-2xl font-medium flex items-center gap-4">
-              <Check className="text-primary" />
+              <Check className="text-primary shrink-0" />
               Compare different insurance Item
             </li>
 
             <li className="text-2xl font-medium flex items-center gap-4">
-              <Check className="text-primary" />
+              <Check className="text-primary shrink-0" />
               Buy, store and share all your policies online
             </li>
 
             <li className="text-2xl font-medium flex items-center gap-4">
-              <Check className="text-primary" />
+              <Check className="text-primary shrink-0" />
               Email & Live chat.
             </li>
           </ul>
@@ -59,7 +66,33 @@ export default function DownloadApp() {
         </div>
 
         {/* right */}
-        <div className="w-1/2"></div>
+        <div className="w-full xl:w-1/2 relative  ">
+          <div className="flex justify-center xl:block">
+            <div>
+              <img
+                src={frontMobile}
+                alt="mobile image"
+                className="relative z-20 object-contain"
+              />
+            </div>
+
+            <div className="absolute md:top-14 md:right-20  lg:top-14 xl:top-18 2xl:right-23 2xl:top-16 lg:right-40 ">
+              <img
+                src={backMobile}
+                alt="mobile image"
+                className="object-cover"
+              />
+
+              <div className="absolute -top-10 -right-12">
+                <TopThreeLine />
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute bottom-10 left-0 lg:bottom-15 lg:-left-55">
+            <LoopArrow />
+          </div>
+        </div>
       </div>
     </Container>
   );

@@ -121,7 +121,7 @@ export default function WhatBest() {
                 </div>
 
                 <div
-                  className={`flex transition-all duration-1000 ease-in-out ${
+                  className={`flex transition-all duration-400 ease-in-out ${
                     index === selected
                       ? "max-h-50 opacity-100 pt-3 pb-6 visible"
                       : "max-h-0 opacity-0 invisible "

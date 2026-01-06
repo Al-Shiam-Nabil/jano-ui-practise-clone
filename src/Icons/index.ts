@@ -7,6 +7,7 @@ import Discover4 from "../Icons/discover4.svg?react";
 import Icon1 from "../Icons/icon_1.svg?react";
 import Icon2 from "../Icons/icon_2.svg?react";
 import Icon3 from "../Icons/icon_3.svg?react";
+import LoopArrow from "../Icons/loopArrow.svg?react";
 import PlayStoreIcon from "../Icons/playstoreIcon.svg?react";
 import RectangleDot from "../Icons/rectangleDot.svg?react";
 import SmallSqureDot from "../Icons/smallSqureDot.svg?react";
@@ -26,6 +27,7 @@ export {
   Icon1,
   Icon2,
   Icon3,
+  LoopArrow,
   PlayStoreIcon,
   RectangleDot,
   SmallSqureDot,
