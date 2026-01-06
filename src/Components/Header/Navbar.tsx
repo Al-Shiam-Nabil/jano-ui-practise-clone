@@ -1,5 +1,6 @@
 import { ChevronDown, UserRound } from "lucide-react";
 
+import { useEffect, useState } from "react";
 import Button from "../../Shared/Button";
 import BlogNav from "./Navbar/BlogNav";
 import ContactNav from "./Navbar/ContactNav";
@@ -8,9 +9,27 @@ import PageNav from "./Navbar/PageNav";
 import PortfolioNav from "./Navbar/PortfolioNav";
 
 const Navbar = () => {
+  const [navScrollY, setNavScrollY] = useState<boolean>(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setNavScrollY(window.scrollY > 50);
+    };
+
+    window.document.addEventListener("scroll", onScroll);
+
+    return () => window.document.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
-      <section className=" border-b border-gray-200 bg-white py-5">
+      <section
+        className={` ${
+          navScrollY
+            ? "shadow-md  py-3.5 border-none border-b border-transparent"
+            : " border-b border-gray-200 py-5"
+        }  bg-white transition-all duration-500 ease-in-out`}
+      >
         <div className="flex justify-between items-center px-4 sm:px-5 md:px-8 lg:px-16">
           {/* left*/}
           <h3 className="text-4xl font-extrabold">Jano.</h3>
