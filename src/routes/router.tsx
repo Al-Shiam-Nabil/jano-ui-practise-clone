@@ -4,12 +4,20 @@ import {
   createRouter,
 } from "@tanstack/react-router";
 import App from "../App";
+import TopToBottom from "../Shared/TopToBottom";
 
 const rootRoute = createRootRoute();
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
-  component: App,
+  component: () => {
+    return (
+      <>
+        <App />
+        <TopToBottom />
+      </>
+    );
+  },
 });
 
 const routeTree = rootRoute.addChildren([indexRoute]);

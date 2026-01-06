@@ -1,9 +1,11 @@
 import AppleStoreIcon from "../Icons/appleIcon.svg?react";
 import Comma from "../Icons/comma.svg?react";
+import CurveArrow from "../Icons/curveArrow.svg?react";
 import Discover1 from "../Icons/discover1.svg?react";
 import Discover2 from "../Icons/discover2.svg?react";
 import Discover3 from "../Icons/discover3.svg?react";
 import Discover4 from "../Icons/discover4.svg?react";
+import HeadPhoneIcon from "../Icons/headPhoneIcon.svg?react";
 import Icon1 from "../Icons/icon_1.svg?react";
 import Icon2 from "../Icons/icon_2.svg?react";
 import Icon3 from "../Icons/icon_3.svg?react";
@@ -20,10 +22,12 @@ import WhyBest3 from "../Icons/whyBest3.svg?react";
 export {
   AppleStoreIcon,
   Comma,
+  CurveArrow,
   Discover1,
   Discover2,
   Discover3,
   Discover4,
+  HeadPhoneIcon,
   Icon1,
   Icon2,
   Icon3,

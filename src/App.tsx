@@ -1,6 +1,7 @@
 import ClientFeedback from "./Components/ClientFeedback/ClientFeedback";
 import DiscoverServices from "./Components/DiscoverServices/DiscoverServices";
 import DownloadApp from "./Components/DownloadApp/DownloadApp";
+import FillTheForm from "./Components/FillTheForm/FillTheForm";
 import HappierCustomer from "./Components/HappierCustomer/HappierCustomer";
 import Navbar from "./Components/Header/Navbar";
 import Hero from "./Components/Hero/Hero";
@@ -29,6 +30,7 @@ function App() {
 
         <ClientFeedback />
         <DownloadApp />
+        <FillTheForm />
       </div>
     </>
   );
