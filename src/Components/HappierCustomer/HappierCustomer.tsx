@@ -2,9 +2,10 @@ import { Check, Play, X } from "lucide-react";
 import { useRef, useState } from "react";
 import { AiOutlineMinus } from "react-icons/ai";
 
-import DotBg from "../../Icons/dot_bg.svg";
-import Container from "../../Shared/Container";
 import manImage from "../../assets/man_image.png";
+import DotBg from "../../Icons/dot_bg.svg";
+import AnimationScrollY from "../../Shared/AnimationScrollY";
+import Container from "../../Shared/Container";
 
 /* =========================
    MAIN COMPONENT
@@ -16,66 +17,68 @@ const HappierCustomer = () => {
   return (
     <>
       <div className="bg-[#F6F9FB]">
-        <Container className="mb-24 mt-40">
-          <div className="relative flex w-full flex-col-reverse items-center gap-20 xl:flex-row">
-            {/* LEFT */}
-            <div
-              className="relative h-[1000px] w-full shrink-0 bg-bottom bg-no-repeat pt-25 xl:h-[630px] xl:w-1/2"
-              style={{ backgroundImage: `url(${DotBg})` }}
-            >
-              <img
-                src={manImage}
-                alt="man"
-                className="absolute bottom-0 left-11"
-              />
-
-              {/* Happier */}
-              <InfoCard
-                className="2xl:-left-16 lg:top-60 xl:-left-12"
-                title="Happier"
-                subtitle="Customers"
-              />
-
-              {/* Insurance */}
-              <InfoCard
-                className="right-[-3rem] top-25"
-                title="30+"
-                subtitle="Insurance Item"
-              />
-
-              {/* Seller Leads */}
-              <InfoCard
-                className="-bottom-10 -right-7"
-                title="Seller Leads"
-                subtitle="Who are listing soon"
-              />
-            </div>
-
-            {/* RIGHT */}
-            <div className="w-full space-y-7.5 xl:w-1/2">
-              <button
-                onClick={() => setOpenModal(true)}
-                className="grid h-16.5 w-16.5 place-items-center rounded-full bg-black text-white"
+        <AnimationScrollY>
+          <Container className="mb-24 mt-40">
+            <div className="relative flex w-full flex-col-reverse items-center gap-20 xl:flex-row">
+              {/* LEFT */}
+              <div
+                className="relative h-[1000px] w-full shrink-0 bg-bottom bg-no-repeat pt-25 xl:h-[630px] xl:w-1/2"
+                style={{ backgroundImage: `url(${DotBg})` }}
               >
-                <Play />
-              </button>
+                <img
+                  src={manImage}
+                  alt="man"
+                  className="absolute bottom-0 left-11"
+                />
 
-              <p className="text-[42px]">
-                The team signed{" "}
-                <span className="font-medium text-primary underline">
-                  ~$7,000,000
-                </span>{" "}
-                in new business in July. <br />
-                Accelerator has been a large part of that.
-              </p>
+                {/* Happier */}
+                <InfoCard
+                  className="2xl:-left-16 lg:top-60 xl:-left-12"
+                  title="Happier"
+                  subtitle="Customers"
+                />
 
-              <p className="flex items-center gap-1 text-xl font-semibold italic">
-                <AiOutlineMinus />
-                Jessica Woodbeck
-              </p>
+                {/* Insurance */}
+                <InfoCard
+                  className="right-[-3rem] top-25"
+                  title="30+"
+                  subtitle="Insurance Item"
+                />
+
+                {/* Seller Leads */}
+                <InfoCard
+                  className="-bottom-10 -right-7"
+                  title="Seller Leads"
+                  subtitle="Who are listing soon"
+                />
+              </div>
+
+              {/* RIGHT */}
+              <div className="w-full space-y-7.5 xl:w-1/2">
+                <button
+                  onClick={() => setOpenModal(true)}
+                  className="grid h-16.5 w-16.5 place-items-center rounded-full bg-black text-white"
+                >
+                  <Play />
+                </button>
+
+                <p className="text-[42px]">
+                  The team signed{" "}
+                  <span className="font-medium text-primary underline">
+                    ~$7,000,000
+                  </span>{" "}
+                  in new business in July. <br />
+                  Accelerator has been a large part of that.
+                </p>
+
+                <p className="flex items-center gap-1 text-xl font-semibold italic">
+                  <AiOutlineMinus />
+                  Jessica Woodbeck
+                </p>
+              </div>
             </div>
-          </div>
-        </Container>
+          </Container>
+        </AnimationScrollY>
       </div>
 
       <VideoModal open={openModal} onClose={() => setOpenModal(false)} />

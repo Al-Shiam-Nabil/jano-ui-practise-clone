@@ -5,6 +5,8 @@ import Container from "../../Shared/Container";
 
 import RectangleDot from "../../Icons/rectangleDot.svg";
 import SmallDot from "../../Icons/smallSqureDot.svg";
+import AnimationScrollRightToLeft from "../../Shared/AnimationScrollRightToLeft";
+import AnimationScrollTopToBottom from "../../Shared/AnimationScrollTopToBottom";
 
 export default function WhatBest() {
   const [selected, setSelected] = useState<number | null>(null);
@@ -56,18 +58,21 @@ export default function WhatBest() {
           </div>
 
           <div className="flex justify-between gap-12">
-            <div className="border border-[#9650ef] bg-[#a25bfb33] max-w-[292px] space-y-4 p-8.5 rounded-tl-[40px] rounded-br-[40px] flex flex-col justify-center relative">
-              <h3 className="text-[#9650ef] text-4xl font-semibold">
-                50+ Insurance
-              </h3>
-              <p className="text-lg text-black/70">
-                Partnered with us so that you can compare easily & transparently
-              </p>
+            <AnimationScrollTopToBottom>
+              <div className="border border-[#9650ef] bg-[#a25bfb33] max-w-[292px] space-y-4 p-8.5 rounded-tl-[40px] rounded-br-[40px] flex flex-col justify-center relative">
+                <h3 className="text-[#9650ef] text-4xl font-semibold">
+                  50+ Insurance
+                </h3>
+                <p className="text-lg text-black/70">
+                  Partnered with us so that you can compare easily &
+                  transparently
+                </p>
 
-              <div className="absolute -bottom-12 -left-12">
-                <ThreeLine />
+                <div className="absolute -bottom-12 -left-12">
+                  <ThreeLine />
+                </div>
               </div>
-            </div>
+            </AnimationScrollTopToBottom>
             <div>
               <div className="border border-[#00bde6] space-y-4 p-8.5 bg-[#00d1ff33] rounded-tl-[40px] rounded-br-[40px]">
                 <h3 className="text-[27px] text-[#00bde6] font-semibold">
@@ -86,55 +91,62 @@ export default function WhatBest() {
         </div>
 
         {/* right */}
+
         <div className="w-full lg:w-1/2">
-          <p className="text-black/30 uppercase">Why Choose Us</p>
-          <h3 className="text-[58px] font-semibold">What makes us the best.</h3>
+          <AnimationScrollRightToLeft duration={0.8}>
+            <p className="text-black/30 uppercase">Why Choose Us</p>
+            <h3 className="text-[58px] font-semibold">
+              What makes us the best.
+            </h3>
 
-          <div className="space-y-5 my-10 h-112.5">
-            {bestArr.map((best, index) => (
-              <div
-                key={index}
-                className="shadow-sm shadow-gray-200 relative  rounded-xl  "
-              >
+            <div className="space-y-5 my-10 h-112.5">
+              {bestArr.map((best, index) => (
                 <div
-                  onClick={() =>
-                    setSelected((prev) => (prev === index ? null : index))
-                  }
-                  className={`flex justify-between cursor-pointer  ${
-                    index === selected ? "pt-6 px-6" : "p-6"
-                  }`}
+                  key={index}
+                  className="shadow-sm shadow-gray-200 relative  rounded-xl  "
                 >
-                  <div className="flex gap-5  ">
-                    <best.icon />
+                  <div
+                    onClick={() =>
+                      setSelected((prev) => (prev === index ? null : index))
+                    }
+                    className={`flex justify-between cursor-pointer  ${
+                      index === selected ? "pt-6 px-6" : "p-6"
+                    }`}
+                  >
+                    <div className="flex gap-5  ">
+                      <best.icon />
 
-                    <div>
-                      <h3 className="text-2xl font-semibold">{best?.title}</h3>
+                      <div>
+                        <h3 className="text-2xl font-semibold">
+                          {best?.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <div
+                      className={`${
+                        index === selected && "rotate-180"
+                      } text-gray-500`}
+                    >
+                      <ChevronDown />
                     </div>
                   </div>
+
                   <div
-                    className={`${
-                      index === selected && "rotate-180"
-                    } text-gray-500`}
+                    className={`flex transition-all duration-400 ease-in-out ${
+                      index === selected
+                        ? "max-h-50 opacity-100 pt-3 pb-6 visible"
+                        : "max-h-0 opacity-0 invisible "
+                    }`}
                   >
-                    <ChevronDown />
+                    <div className="w-19 shrink-0"></div>
+                    <p className="text-lg text-[#212529] max-w-113">
+                      {best?.description}
+                    </p>
                   </div>
                 </div>
-
-                <div
-                  className={`flex transition-all duration-400 ease-in-out ${
-                    index === selected
-                      ? "max-h-50 opacity-100 pt-3 pb-6 visible"
-                      : "max-h-0 opacity-0 invisible "
-                  }`}
-                >
-                  <div className="w-19 shrink-0"></div>
-                  <p className="text-lg text-[#212529] max-w-113">
-                    {best?.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </AnimationScrollRightToLeft>
         </div>
       </div>
     </Container>

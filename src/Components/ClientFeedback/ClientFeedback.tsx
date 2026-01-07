@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import AnimationScrollY from "../../Shared/AnimationScrollY";
 
 export default function ClientFeedback() {
   const feedbackArr = [
@@ -58,76 +59,78 @@ export default function ClientFeedback() {
   ];
 
   return (
-    <div className="bg-[#f6f9fb] pt-25 pb-10">
-      <h2 className="text-[35px] lg:text-[45px] xl:text-[58px] font-semibold text-center">
-        Client Feedback
-      </h2>
+    <AnimationScrollY>
+      <div className="bg-[#f6f9fb] pt-25 pb-10">
+        <h2 className="text-[35px] lg:text-[45px] xl:text-[58px] font-semibold text-center">
+          Client Feedback
+        </h2>
 
-      <div className="my-16">
-        <Swiper
-          loop={true}
-          slidesPerView={3}
-          spaceBetween={40}
-          pagination={{
-            clickable: true,
-          }}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-          }}
-          breakpoints={{
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 40,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 50,
-            },
-          }}
-          //   pagination={Pagination}
-          modules={[Pagination, Autoplay]}
-          className="feedbackSwiper"
-        >
-          {feedbackArr.map((feedback, index) => (
-            <SwiperSlide key={index}>
-              <div className="shrink-0 max-w-[744px] bg-white px-[70px] py-12 rounded-xl space-y-10">
-                <div className="flex justify-between items-center">
-                  <div className="space-y-4">
-                    <h3 className="text-3xl font-semibold">
-                      {feedback?.companyName}
-                    </h3>
+        <div className="my-16">
+          <Swiper
+            loop={true}
+            slidesPerView={3}
+            spaceBetween={40}
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+              },
+            }}
+            //   pagination={Pagination}
+            modules={[Pagination, Autoplay]}
+            className="feedbackSwiper"
+          >
+            {feedbackArr.map((feedback, index) => (
+              <SwiperSlide key={index}>
+                <div className="shrink-0 max-w-[744px] bg-white px-[70px] py-12 rounded-xl space-y-10">
+                  <div className="flex justify-between items-center">
+                    <div className="space-y-4">
+                      <h3 className="text-3xl font-semibold">
+                        {feedback?.companyName}
+                      </h3>
 
-                    <RatingStar rating={feedback.rating} />
+                      <RatingStar rating={feedback.rating} />
+                    </div>
+                    <div className="">
+                      <Comma className="w-12.5 h-12.5" />
+                    </div>
                   </div>
-                  <div className="">
-                    <Comma className="w-12.5 h-12.5" />
+
+                  <p className="text-[26px]">{feedback?.description}</p>
+
+                  <div className="flex justify-between items-center">
+                    <p className="text-xl font-semibold">
+                      {feedback?.name},
+                      <span className="font-normal text-gray-500">
+                        {feedback?.address}
+                      </span>
+                    </p>
+                    <div>
+                      <img src={feedback?.avatar} alt="client image" />
+                    </div>
                   </div>
                 </div>
-
-                <p className="text-[26px]">{feedback?.description}</p>
-
-                <div className="flex justify-between items-center">
-                  <p className="text-xl font-semibold">
-                    {feedback?.name},
-                    <span className="font-normal text-gray-500">
-                      {feedback?.address}
-                    </span>
-                  </p>
-                  <div>
-                    <img src={feedback?.avatar} alt="client image" />
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
-    </div>
+    </AnimationScrollY>
   );
 }
 

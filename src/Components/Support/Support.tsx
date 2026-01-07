@@ -1,4 +1,5 @@
 import { Icon1, Icon2, Icon3 } from "../../Icons";
+import AnimationScrollY from "../../Shared/AnimationScrollY";
 import Container from "../../Shared/Container";
 
 const supportArr = [
@@ -27,24 +28,25 @@ const supportArr = [
 const Support = () => {
   return (
     <>
-      <Container className="my-24 mt-30">
+      <Container className="my-24 mt-55">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {supportArr.map((supportCard, index) => (
-            <div
-              key={index}
-              className={`p-9.25 rounded-xl relative space-y-6 min-h-100 xl:min-h-90 ${supportCard.color} hover:bg-white border border-transparent hover:border-primary transition-all duration-400 `}
-            >
-              <h3 className="text-[30px] font-bold max-w-83">
-                {supportCard?.title}
-              </h3>
-              <p className="text-lg text-gray-500">
-                {supportCard?.description}
-              </p>
+            <AnimationScrollY key={index} duration={0.3 + 0.2 * index}>
+              <div
+                className={`p-9.25 rounded-xl relative space-y-6 min-h-100 xl:min-h-90 ${supportCard.color} hover:bg-white border border-transparent hover:border-primary transition-all duration-400 `}
+              >
+                <h3 className="text-[30px] font-bold max-w-83">
+                  {supportCard?.title}
+                </h3>
+                <p className="text-lg text-gray-500">
+                  {supportCard?.description}
+                </p>
 
-              <div className="absolute bottom-9 right-9 text-[150px] ">
-                <supportCard.icon />
+                <div className="absolute bottom-9 right-9 text-[150px] ">
+                  <supportCard.icon />
+                </div>
               </div>
-            </div>
+            </AnimationScrollY>
           ))}
         </div>
       </Container>

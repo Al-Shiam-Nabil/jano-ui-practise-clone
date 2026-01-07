@@ -1,6 +1,7 @@
 import { ChevronDown, UserRound } from "lucide-react";
 
 import { useEffect, useState } from "react";
+import navLogo from "../../assets/navLogo.png";
 import Button from "../../Shared/Button";
 import BlogNav from "./Navbar/BlogNav";
 import ContactNav from "./Navbar/ContactNav";
@@ -32,7 +33,8 @@ const Navbar = () => {
       >
         <div className="flex justify-between items-center px-4 sm:px-5 md:px-8 lg:px-16">
           {/* left*/}
-          <h3 className="text-4xl font-extrabold">Jano.</h3>
+
+          <img src={navLogo} alt="logo" />
 
           {/* middle */}
           <nav className="hidden lg:block">
