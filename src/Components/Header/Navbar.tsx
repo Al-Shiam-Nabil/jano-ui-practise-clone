@@ -3,26 +3,102 @@ import { ChevronDown, Menu, UserRound, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import navLogo from "../../assets/navLogo.png";
 import Button from "../../Shared/Button";
-import HomeNav from "./Navbar/HomeNav";
 
-const menu = {
-  menuList: [
+const Navbar = () => {
+  const [navScrollY, setNavScrollY] = useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [showSubMenu, setShowSubMenu] = useState<number | null>(null);
+  console.log(showSubMenu);
+
+  const menusArry = [
     {
       label: "Home",
       subMenu: [
         {
           label: "Business",
+          menuList: [
+            {
+              url: "#",
+              label: "insurance",
+            },
+            {
+              url: "#",
+              label: "Web hosting",
+            },
+            {
+              url: "#",
+              label: "Education",
+            },
+
+            {
+              url: "#",
+              label: "N.P. Charity",
+            },
+            {
+              url: "#",
+              label: "Real State",
+            },
+          ],
         },
+
         {
           label: "Landing",
+          menuList: [
+            {
+              url: "#",
+              label: "insurance",
+            },
+            {
+              url: "#",
+              label: "Web hosting",
+            },
+            {
+              url: "#",
+              label: "Education",
+            },
+
+            {
+              url: "#",
+              label: "N.P. Charity",
+            },
+            {
+              url: "#",
+              label: "Real State",
+            },
+          ],
         },
+
         {
           label: "Agency",
+          menuList: [
+            {
+              url: "#",
+              label: "insurance",
+            },
+            {
+              url: "#",
+              label: "Web hosting",
+            },
+            {
+              url: "#",
+              label: "Education",
+            },
+
+            {
+              url: "#",
+              label: "N.P. Charity",
+            },
+            {
+              url: "#",
+              label: "Real State",
+            },
+          ],
         },
       ],
     },
+
     {
-      label: "pages",
+      label: "Pages",
     },
     {
       label: "Portfolio",
@@ -31,18 +107,10 @@ const menu = {
     {
       label: "Blog",
     },
-
     {
-      label: "Contact",
+      label: "contact",
     },
-  ],
-};
-
-console.log(menu);
-
-const Navbar = () => {
-  const [navScrollY, setNavScrollY] = useState<boolean>(false);
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  ];
 
   useEffect(() => {
     const onScroll = () => {
@@ -60,77 +128,66 @@ const Navbar = () => {
         className={` ${
           navScrollY
             ? "shadow-md  py-3.5 border-none border-b border-transparent"
-            : " border-b border-gray-200 py-5 lg:py-0"
+            : " border-b border-gray-200 py-5 lg:py-5"
         }  bg-white transition-all duration-500 ease-in-out`}
       >
         <div className="flex justify-between items-center px-4 sm:px-5 md:px-8 lg:px-16">
           {/* left*/}
-
           <img src={navLogo} alt="logo" />
 
           {/* middle */}
           <nav
-            className={` absolute lg:static w-[320px] h-screen lg:h-fit lg:w-fit py-8 px-4 top-0 left-0 shadow-xl bg-white lg:shadow-none lg:bg-transparent  lg:block transition-all duration-500 ease-in-out overflow-x-auto lg:overflow-visible ${
-              menuOpen
-                ? "translate-x-0 lg:translate-none"
-                : "-translate-x-100 lg:translate-none"
-            } `}
+            className={`absolute lg:static w-[320px] h-screen lg:h-fit lg:w-fit py-8 px-4 lg:px-0 lg:py-0 top-0 left-0 bg-white shadow-2xl lg:shadow-none ${
+              menuOpen ? "translate-x-0 " : "-translate-x-100"
+            } lg:translate-none transition-all duration-500 ease-in-out overflow-y-auto lg:overflow-visible`}
           >
-            <img src={navLogo} alt="logo" className="lg:hidden" />
+            <img src={navLogo} alt="logo" className="lg:hidden mb-23" />
 
-            <ul className="flex flex-col lg:flex-row lg:items-center gap-8 mt-23 lg:mt-0">
-              {menu.menuList.map((menu, index) => (
-                <li key={index} className="relative group  w-full lg:w-fit ">
-                  <span className="flex justify-between lg:justify-center items-center group-hover:text-primary cursor-pointer py-3 text-lg font-semibold">
-                    {menu?.label} <ChevronDown />
+            <ul className="flex relative flex-col lg:flex-row gap-8 lg:gap-10">
+              {menusArry.map((menu, index) => (
+                <li key={index} className="relative ">
+                  <span
+                    onClick={() =>
+                      setShowSubMenu((prev) => (prev === index ? null : index))
+                    }
+                    className={`lg:py-3 flex justify-between ${
+                      showSubMenu === index ? "text-primary" : "text-black"
+                    } items-center text-lg font-semibold capitalize`}
+                  >
+                    {menu?.label}
+                    <ChevronDown
+                      className={`${showSubMenu === index && "rotate-180"}`}
+                    />
                   </span>
 
-                  <div
-                    className={`bg-[#eefbfa]  ${
-                      menu?.subMenu && "py-4 px-3 rounded-md"
-                    }   lg:bg-transparent lg:py-0 lg:px-0 lg:rounded-0`}
-                  >
-                    {menu?.subMenu?.map((sub, ind) => (
-                      <HomeNav
-                        key={ind}
-                        sub={sub}
-                        className="lg:min-w-150 lg:p-8"
-                      ></HomeNav>
-                    ))}
-                  </div>
+                  {showSubMenu === index && (
+                    <ul
+                      className={`bg-[#eefbfa] lg:bg-white lg:shadow-2xl lg:shadow-gray-300 mt-3 lg:mt-0 ${
+                        menu?.subMenu && "py-4 lg:p-6 px-3"
+                      } rounded-md  lg:w-[660px] lg:absolute -left-8 top-full flex  flex-col lg:flex-row lg:justify-between gap-7`}
+                    >
+                      {menu?.subMenu?.map((sub, ind) => (
+                        <li key={ind} className="">
+                          <h3 className="font-semibold inline-block  border-b-2 border-black py-0.5 capitalize">
+                            {sub?.label}
+                          </h3>
+
+                          <ul className="mt-3 space-y-3">
+                            {sub.menuList.map((list, i) => (
+                              <li key={i} className="capitalize">
+                                {list.label}
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               ))}
-
-              {/* <li className="relative group  ">
-                <span className="flex items-center group-hover:text-primary  cursor-pointer py-3 text-lg font-semibold">
-                  Pages <ChevronDown />
-                </span>
-                <PageNav className="min-w-75 py-6 pl-6"></PageNav>
-              </li>
-
-              <li className="relative group  ">
-                <span className="flex items-center group-hover:text-primary  cursor-pointer py-3 text-lg font-semibold">
-                  Portfolio <ChevronDown />
-                </span>
-                <PortfolioNav className="min-w-60 py-6 pl-6"></PortfolioNav>
-              </li>
-
-              <li className="relative group  ">
-                <span className="flex items-center group-hover:text-primary  cursor-pointer py-3 text-lg font-semibold">
-                  Blog <ChevronDown />
-                </span>
-                <BlogNav className="min-w-60 py-6 pl-6"></BlogNav>
-              </li>
-
-              <li className="relative group  ">
-                <span className="flex items-center group-hover:text-primary  cursor-pointer py-3 text-lg font-semibold">
-                  Contact <ChevronDown />
-                </span>
-                <ContactNav className="min-w-60 py-6 pl-6"></ContactNav>
-              </li> */}
             </ul>
 
-            <div className="w-full lg:hidden grid place-items-center mt-18">
+            <div className="grid place-items-center lg:hidden mt-25">
               <Button className="  rounded-full font-semibold">
                 Contact us
               </Button>
